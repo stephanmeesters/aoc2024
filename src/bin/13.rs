@@ -24,16 +24,6 @@ pub fn part_one(input: &str) -> Option<u32> {
     Some(total as u32)
 }
 
-fn extract_vec(regex:&Regex, input: &str) -> IVec2 {
-    let (_, [l1, l2]) = regex.captures(input).unwrap().extract();
-    IVec2::new(l1.parse().unwrap(), l2.parse().unwrap())
-}
-
-fn extract_vec_64(regex:&Regex, input: &str) -> I64Vec2 {
-    let (_, [l1, l2]) = regex.captures(input).unwrap().extract();
-    I64Vec2::new(l1.parse().unwrap(), l2.parse().unwrap())
-}
-
 pub fn part_two(input: &str) -> Option<u64> {
     let regex = Regex::new(r"(\d+).{4}(\d+)").unwrap();
     let input_lines:Vec<&str> = input.lines().collect();
@@ -52,9 +42,19 @@ pub fn part_two(input: &str) -> Option<u64> {
             total += cost;
         }
     }
-    println!("{}", total);
     Some(total as u64)
 }
+
+fn extract_vec(regex:&Regex, input: &str) -> IVec2 {
+    let (_, [l1, l2]) = regex.captures(input).unwrap().extract();
+    IVec2::new(l1.parse().unwrap(), l2.parse().unwrap())
+}
+
+fn extract_vec_64(regex:&Regex, input: &str) -> I64Vec2 {
+    let (_, [l1, l2]) = regex.captures(input).unwrap().extract();
+    I64Vec2::new(l1.parse().unwrap(), l2.parse().unwrap())
+}
+
 
 #[cfg(test)]
 mod tests {
