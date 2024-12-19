@@ -9,3 +9,7 @@ macro_rules! printd {
     };
 }
 
+pub fn pause() {
+    let mut line = String::new();
+    std::io::stdin().read_line(&mut line).unwrap();
+}
